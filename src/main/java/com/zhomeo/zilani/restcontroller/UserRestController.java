@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 @RestController
-@RequestMapping(ApiUrls.VERSION_1 + ApiUrls.ROOT_URL_USERS)
+@RequestMapping(ApiUrls.ROOT_URL_USERS)
 public class UserRestController {
     private final Logger logger = LoggerFactory.getLogger(UserRestController.class);
 

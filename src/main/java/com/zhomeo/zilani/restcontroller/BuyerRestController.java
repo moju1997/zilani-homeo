@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(ApiUrls.VERSION_1 + ApiUrls.ROOT_URL_BUYERS)
+@RequestMapping(ApiUrls.ROOT_URL_BUYERS)
 public class BuyerRestController {
     private final Logger logger = LoggerFactory.getLogger(BuyerRestController.class);
 

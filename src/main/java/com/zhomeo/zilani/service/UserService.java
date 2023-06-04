@@ -115,7 +115,7 @@ public class UserService implements IUserService {
   @Transactional
   public User save(User user) {
     logger.debug("save()");
-    user.setRoles("ADMIN");
+    user.setRoles("admin");
     if (user.getPassword() == null){
       user.setPassword(user.getMobile());
     }

@@ -1,0 +1,51 @@
+{
+  "name": "zilani",
+  "version": "1.2.12",
+  "private": true,
+  "dependencies": {
+    "@date-io/moment": "1.3.13",
+    "@jazasoft/mui-table": "^0.2.30",
+    "@material-ui/core": "4.11.4",
+    "@material-ui/icons": "4.11.2",
+    "@material-ui/lab": "4.0.0-alpha.54",
+    "@material-ui/pickers": "3.2.10",
+    "@material-ui/styles": "4.11.4",
+    "echarts": "4.3.0",
+    "echarts-for-react": "2.0.16",
+    "fast-deep-equal": "3.1.3",
+    "history": "4.9.0",
+    "html-to-text": "7.1.1",
+    "jazasoft": "2.4.5",
+    "jspdf": "1.5.3",
+    "jspdf-autotable": "3.5.14",
+    "material-table": "1.57.2",
+    "react": "16.13.1",
+    "react-big-calendar": "0.27.0",
+    "react-dom": "16.13.1",
+    "react-dropzone": "12.0.4",
+    "react-perfect-scrollbar": "1.5.8",
+    "react-scripts": "3.4.1",
+    "read-excel-file": "4.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
