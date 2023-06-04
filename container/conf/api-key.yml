@@ -1,0 +1,11 @@
+#api-keys:
+#  - !com.jazasoft.embedded.dto.ApiKey
+#    client: optacut
+#    tenantId: test
+#    active: true
+#    key: gRlHJyFhaSGyJcIr.dGVzdA==.b3B0YWN1dA==
+#    apis:
+#      - !com.jazasoft.embedded.dto.UrlInterceptor
+#        url: /api/users
+#        scopeActionList:
+#          - 'read'

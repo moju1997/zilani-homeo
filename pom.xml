@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.zhomeo</groupId>
+	<artifactId>zilani</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.3</version>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<lombok.version>1.18.20</lombok.version>
+		<hamcrest.version>2.2</hamcrest.version>
+		<spock.version>2.0-groovy-3.0</spock.version>
+		<groovy.version>3.0.8</groovy.version>
+		<jazasoft.version>3.5.3-RELEASE</jazasoft.version>
+
+
+		<skipIT>false</skipIT>
+		<skipUT>false</skipUT>
+		<app.dir>cfea</app.dir>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.jazasoft</groupId>
+			<artifactId>jazasoft-embedded</artifactId>
+			<version>${jazasoft.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.ozlerhakan</groupId>
+			<artifactId>poiji</artifactId>
+			<version>1.19.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.mnode.ical4j/ical4j -->
+		<dependency>
+			<groupId>org.mnode.ical4j</groupId>
+			<artifactId>ical4j</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+
+		<!--Testing Dependencies-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Mandatory dependencies for using Spock -->
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>${spock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-spring</artifactId>
+			<version>${spock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-sql</artifactId>
+			<version>${groovy.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+						<nonFilteredFileExtension>p12</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+
+			<!-- For creating Build Information-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>false</doCheck>
+					<doUpdate>false</doUpdate>
+					<!--<format>{0,number,integer}</format>-->
+					<items>
+						<item>buildNumber</item>
+					</items>
+					<timestampFormat>{0,date,dd MMM,yyyy hh:mm a z(Z)}</timestampFormat>
+					<timezone>IST</timezone>
+					<shortRevisionLength>10</shortRevisionLength>
+					<!--<buildNumberPropertiesFileLocation>${project.basedir.basedir}/../../build/buildNumber.properties</buildNumberPropertiesFileLocation>-->
+				</configuration>
+			</plugin>
+
+			<!-- For compiling Groovy source code -->
+			<plugin>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>1.12.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>compileTests</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!--For Running Unit Tests in Project-->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<skipTests>${skipUT}</skipTests>
+					<useFile>false</useFile>
+					<includes>
+						<include>**/*USpec.java</include>
+						<include>**/*UTest.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+
+			<!--  For Running Integration Tests in Project-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipITs>${skipIT}</skipITs>
+					<includes>
+						<include>**/*ITest.java</include>
+						<include>**/*ISpec.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+
+			<!-- For Generating Test Coverage Report -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+
+					<!-- Before running unit tests -->
+					<execution>
+						<id>preTest</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<skip>${skipUT}</skip>
+							<destFile>${project.build.directory}/jacoco.exec</destFile>
+						</configuration>
+					</execution>
+
+					<!-- After running unit tests -->
+					<execution>
+						<id>postTest</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<skip>${skipUT}</skip>
+							<dataFile>${project.build.directory}/jacoco.exec</dataFile>
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+
+
+					<!-- Before running integration tests -->
+					<execution>
+						<id>preIT</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>prepare-agent-integration</goal>
+						</goals>
+						<configuration>
+							<skip>${skipIT}</skip>
+							<destFile>${project.build.directory}/jacoco-it.exec</destFile>
+						</configuration>
+					</execution>
+
+					<!-- After running integration tests -->
+					<execution>
+						<id>postIT</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>report-integration</goal>
+						</goals>
+						<configuration>
+							<skip>${skipIT}</skip>
+							<dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+
+
+			<!-- For building frontend SPA -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.8.0</version>
+
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<!--                            <nodeVersion>v8.10.0</nodeVersion>-->
+							<!--                            <npmVersion>6.1.0</npmVersion>-->
+							<nodeVersion>v12.18.1</nodeVersion>
+							<npmVersion>6.14.5</npmVersion>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>npm run build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<arguments>run build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!--For Copying files-->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>Copy npm build output</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<delete>
+									<fileset dir="src/main/webapp" includes="**"/>
+								</delete>
+
+								<!--Copy config files-->
+								<copy overwrite="true" todir="src/main/webapp/static">
+									<fileset dir="${project.basedir}/build">
+										<include name="*"/>
+										<exclude name="index.html"/>
+										<exclude name="service-worker.js"/>
+										<type type="file"/>
+									</fileset>
+								</copy>
+
+								<copy overwrite="true" todir="src/main/webapp/static/js/">
+									<fileset dir="${project.basedir}/build/static/js"/>
+								</copy>
+
+								<copy overwrite="true" todir="src/main/webapp/static/css/">
+									<fileset dir="${project.basedir}/build/static/css"/>
+								</copy>
+
+								<copy overwrite="true" todir="src/main/webapp/static/media/">
+									<fileset dir="${project.basedir}/build/static/media"/>
+								</copy>
+
+								<copy overwrite="true" file="${project.basedir}/build/index.html"
+									  todir="src/main/webapp/WEB-INF/"/>
+								<copy overwrite="true" file="${project.basedir}/build/service-worker.js"
+									  todir="src/main/webapp/WEB-INF/"/>
+
+								<replace file="src/main/webapp/WEB-INF/service-worker.js" token="precache-manifest"
+										 value="static/precache-manifest"/>
+
+							</target>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>Prepare Container content</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<!--Create directory structure-->
+								<mkdir dir="${project.build.directory}/${app.dir}/bin"/>
+								<mkdir dir="${project.build.directory}/${app.dir}/conf"/>
+								<mkdir dir="${project.build.directory}/${app.dir}/conf-default"/>
+								<mkdir dir="${project.build.directory}/${app.dir}/log"/>
+								<mkdir dir="${project.build.directory}/${app.dir}/data"/>
+								<!--                                <mkdir dir="${project.build.directory}/${app.dir}/rollback-sql"/>-->
+
+								<!--Copy config files-->
+								<copy todir="${project.build.directory}/${app.dir}/conf-default">
+									<fileset dir="${project.basedir}/container/conf">
+										<exclude name="**/*test*.*"/>
+									</fileset>
+								</copy>
+
+								<copy todir="${project.build.directory}/${app.dir}/bin">
+									<fileset dir="${project.basedir}/container/bin"/>
+								</copy>
+
+								<!--                                <copy todir="${project.build.directory}/${app.dir}/rollback-sql">-->
+								<!--                                    <fileset dir="${project.basedir}/container/rollback-sql"/>-->
+								<!--                                </copy>-->
+
+								<copy file="${project.build.directory}/classes/run.sh"
+									  todir="${project.build.directory}/${app.dir}/bin"/>
+
+								<copy todir="${project.build.directory}/${app.dir}">
+									<fileset dir="${project.basedir}/container">
+										<include name="*"/>
+										<type type="file"/>
+									</fileset>
+								</copy>
+
+								<copy file="${project.build.directory}/${project.build.finalName}.war"
+									  todir="${project.build.directory}/${app.dir}"/>
+
+								<zip basedir="${project.build.directory}"
+									 destfile="${project.build.directory}/${app.dir}.zip"
+									 includes="${app.dir}/**/*"/>
+							</target>
+						</configuration>
+					</execution>
+
+				</executions>
+			</plugin>
+
+
+			<!--For genarating Liquibase Change logs-->
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<propertyFile>src/main/resources/liquibase.properties</propertyFile>
+					<!--<diffTypes>tables,views,columns,indexes,foreignkeys,primarykeys,uniqueconstraints,data</diffTypes>-->
+					<!--<diffTypes>data</diffTypes>-->
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.liquibase.ext</groupId>
+						<artifactId>liquibase-hibernate4</artifactId>
+						<version>3.5</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+						<version>4.1.7.RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework.data</groupId>
+						<artifactId>spring-data-jpa</artifactId>
+						<version>1.11.23.RELEASE</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<url>https://nexus.jaza-soft.com/repository/maven-public/</url>
+		</repository>
+	</repositories>
+
+</project>

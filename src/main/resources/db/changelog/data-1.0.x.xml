@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="razamd" id="v1.0.x-id1">
+        <insert tableName="users">
+            <column name="id" valueNumeric="1"/>
+            <column name="full_name" value="Md Zahid Raza"/>
+            <column name="username" value="zahid7292"/>
+            <column name="password" value="{bcrypt}$2a$10$Lhuk0ZeFzLwIGMtGhQnDT.D2zOpi7OkAbhHwAjIuI6i5ZNrGjv3Xq"/>
+            <column name="roles" value="admin"/>
+            <column name="email" value="zahid7292@gmail.com"/>
+            <column name="mobile" value="8904360418"/>
+            <column name="account_expired" type="BOOL" value="false"/>
+            <column name="account_locked" type="BOOL" value="false"/>
+            <column name="credential_expired" type="BOOL" value="false"/>
+            <column name="enabled" type="BOOL" value="true"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="2"/>
+            <column name="full_name" value="Shivam Sahu"/>
+            <column name="username" value="shivam9650"/>
+            <column name="password" value="shivam9650"/>
+            <column name="roles" value="admin"/>
+            <column name="email" value="shivam9650@gmail.com"/>
+            <column name="mobile" value="9650266021"/>
+            <column name="account_expired" type="BOOL" value="false"/>
+            <column name="account_locked" type="BOOL" value="false"/>
+            <column name="credential_expired" type="BOOL" value="false"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="v1.0.x-id2" author="razamd">
+        <insert tableName="buyer">
+            <column name="id" valueNumeric="1"/>
+            <column name="name" value="Dressmann"/>
+        </insert>
+        <insert tableName="buyer">
+            <column name="id" valueNumeric="2"/>
+            <column name="name" value="GANT"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,20 @@
+21-05-2023 12:40:41.135 [main] ERROR c.j.embedded.util.EmbeddedUtils.<clinit> - /Users/razamd/Projects/Personal/zilani-homeo/conf/application.yml file not found.
+21-05-2023 12:40:41.142 [main] ERROR c.j.embedded.util.EmbeddedUtils.getConfProperty - Unable to find config file either in App home or classpath.
+21-05-2023 12:40:41.143 [main] INFO  c.j.embedded.service.SmsService.<init> - SMS Server Configs: enabled = false, url = null, params = null, headers = null
+21-05-2023 12:40:41.499 [main] WARN  c.j.e.service.UrlInterceptorService.<init> - Url Interceptor file: /Users/razamd/Projects/Personal/zilani-homeo/conf/url-interceptor.yml not found
+21-05-2023 12:42:15.385 [main] ERROR c.j.embedded.util.EmbeddedUtils.<clinit> - /Users/razamd/Projects/Personal/zilani-homeo/conf/application.yml file not found.
+21-05-2023 12:42:15.391 [main] ERROR c.j.embedded.util.EmbeddedUtils.getConfProperty - Unable to find config file either in App home or classpath.
+21-05-2023 12:42:15.391 [main] INFO  c.j.embedded.service.SmsService.<init> - SMS Server Configs: enabled = false, url = null, params = null, headers = null
+21-05-2023 12:42:15.718 [main] WARN  c.j.e.service.UrlInterceptorService.<init> - Url Interceptor file: /Users/razamd/Projects/Personal/zilani-homeo/conf/url-interceptor.yml not found
+21-05-2023 12:48:42.731 [main] ERROR c.j.embedded.util.EmbeddedUtils.<clinit> - /Users/razamd/Projects/Personal/zilani-homeo/conf/application.yml file not found.
+21-05-2023 12:48:42.737 [main] ERROR c.j.embedded.util.EmbeddedUtils.getConfProperty - Unable to find config file either in App home or classpath.
+21-05-2023 12:48:42.737 [main] INFO  c.j.embedded.service.SmsService.<init> - SMS Server Configs: enabled = false, url = null, params = null, headers = null
+21-05-2023 12:48:43.088 [main] WARN  c.j.e.service.UrlInterceptorService.<init> - Url Interceptor file: /Users/razamd/Projects/Personal/zilani-homeo/conf/url-interceptor.yml not found
+21-05-2023 12:49:23.740 [main] ERROR c.j.embedded.util.EmbeddedUtils.<clinit> - /Users/razamd/Projects/Personal/zilani-homeo/conf/application.yml file not found.
+21-05-2023 12:49:23.747 [main] ERROR c.j.embedded.util.EmbeddedUtils.getConfProperty - Unable to find config file either in App home or classpath.
+21-05-2023 12:49:23.747 [main] INFO  c.j.embedded.service.SmsService.<init> - SMS Server Configs: enabled = false, url = null, params = null, headers = null
+21-05-2023 12:49:24.152 [main] WARN  c.j.e.service.UrlInterceptorService.<init> - Url Interceptor file: /Users/razamd/Projects/Personal/zilani-homeo/conf/url-interceptor.yml not found
+21-05-2023 12:56:14.807 [main] ERROR c.j.embedded.util.EmbeddedUtils.<clinit> - /Users/razamd/Projects/Personal/zilani-homeo/conf/application.yml file not found.
+21-05-2023 12:56:14.813 [main] ERROR c.j.embedded.util.EmbeddedUtils.getConfProperty - Unable to find config file either in App home or classpath.
+21-05-2023 12:56:14.813 [main] INFO  c.j.embedded.service.SmsService.<init> - SMS Server Configs: enabled = false, url = null, params = null, headers = null
+21-05-2023 12:56:15.193 [main] WARN  c.j.e.service.UrlInterceptorService.<init> - Url Interceptor file: /Users/razamd/Projects/Personal/zilani-homeo/conf/url-interceptor.yml not found
