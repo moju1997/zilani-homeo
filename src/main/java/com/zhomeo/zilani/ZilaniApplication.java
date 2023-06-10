@@ -32,7 +32,7 @@ public class ZilaniApplication extends AbstractApp {
     CommandLineRunner init(UserService userService) {
         return (args) -> {
             if (userService.count() == 0) {
-                User user = new User("Md Zahid Raza", "zahid7292", "zahid7292@gmail.com", "Jaza@2008", "890430418");
+                User user = new User("Md Mojahid Hussain", "mojahid", "hussainmojahid3@gmail.com", "Zilani@7292", "8409595265");
                 user.setRoles(IConstants.ROLE_ADMIN);
                 userService.save(user);
             }

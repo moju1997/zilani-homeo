@@ -8,6 +8,7 @@ import logoDark from "./asset/img/logo-dark.png";
 import logoWhite from "./asset/img/logo-white.png";
 
 // import Dashboard from "./pages/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 //icons
 import MenuIcon from "@material-ui/icons/Menu";
@@ -94,8 +95,7 @@ class App extends React.Component {
         logoWhite={logoWhite}
         logoDark={logoDark}
         avatar={avatar}
-        dashboard={() => {}}
-        // dashboard={Dashboard}
+        dashboard={Dashboard}
         history={history}
         theme={theme}
       >
