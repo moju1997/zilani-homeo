@@ -2,8 +2,8 @@ package com.zhomeo.zilani.restcontroller;
 
 import com.jazasoft.embedded.specification.CustomRsqlVisitor;
 import com.zhomeo.zilani.ApiUrls;
-import com.zhomeo.zilani.entity.Buyer;
-import com.zhomeo.zilani.service.BuyerService;
+import com.zhomeo.zilani.entity.Vendor;
+import com.zhomeo.zilani.service.VendorService;
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import org.slf4j.Logger;
@@ -21,62 +21,62 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(ApiUrls.ROOT_URL_BUYERS)
-public class BuyerRestController {
-    private final Logger logger = LoggerFactory.getLogger(BuyerRestController.class);
+@RequestMapping(ApiUrls.ROOT_URL_VENDORS)
+public class VendorRestController {
+    private final Logger logger = LoggerFactory.getLogger(VendorRestController.class);
 
-    private BuyerService buyerService;
+    private VendorService vendorService;
 
-    public BuyerRestController(BuyerService buyerService) {
-        this.buyerService = buyerService;
+    public VendorRestController(VendorService vendorService) {
+        this.vendorService = vendorService;
     }
 
     @GetMapping
     public ResponseEntity<?> findAllBuyers(@RequestParam(value = "search", defaultValue = "") String search, Pageable pageable) {
         logger.trace("findAllBuyers()");
-        Page<Buyer> pages;
+        Page<Vendor> pages;
         if (search.trim().isEmpty()) {
-            pages = buyerService.findAll(pageable);
+            pages = vendorService.findAll(pageable);
         } else {
             Node rootNode = new RSQLParser().parse(search);
-            Specification<Buyer> spec = rootNode.accept(new CustomRsqlVisitor<>());
-            pages = buyerService.findAll(spec, pageable);
+            Specification<Vendor> spec = rootNode.accept(new CustomRsqlVisitor<>());
+            pages = vendorService.findAll(spec, pageable);
         }
         return ResponseEntity.ok(pages);
     }
 
-    @GetMapping(ApiUrls.URL_BUYERS_BUYER)
+    @GetMapping(ApiUrls.URL_VENDORS_VENDOR)
     public ResponseEntity<?> findOneBuyer(@PathVariable("buyerId") long id) {
         logger.trace("findOneBuyer(): id = {}", id);
-        return ResponseEntity.of(buyerService.findOne(id));
+        return ResponseEntity.of(vendorService.findOne(id));
     }
 
     @PostMapping
-    public ResponseEntity<?> saveBuyer(@Valid @RequestBody Buyer buyer) {
+    public ResponseEntity<?> saveBuyer(@Valid @RequestBody Vendor buyer) {
         logger.trace("createBuyer():\n {}", buyer.toString());
-        buyer = buyerService.save(buyer);
+        buyer = vendorService.save(buyer);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(buyer.getId()).toUri();
         return ResponseEntity.created(location).body(buyer);
     }
 
-    @PutMapping(ApiUrls.URL_BUYERS_BUYER)
-    public ResponseEntity<?> updateBuyer(@PathVariable("buyerId") long id, @Validated @RequestBody Buyer buyer) {
+    @PutMapping(ApiUrls.URL_VENDORS_VENDOR)
+    public ResponseEntity<?> updateBuyer(@PathVariable("buyerId") long id, @Validated @RequestBody Vendor buyer) {
         logger.trace("updateBuyer(): id = {} \n {}", id, buyer);
-        if (!buyerService.exists(id)) {
+        if (!vendorService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         buyer.setId(id);
-        buyer = buyerService.update(buyer);
+        buyer = vendorService.update(buyer);
         return new ResponseEntity<>(buyer, HttpStatus.OK);
     }
 
-    @DeleteMapping(ApiUrls.URL_BUYERS_BUYER)
+    @DeleteMapping(ApiUrls.URL_VENDORS_VENDOR)
     public ResponseEntity<?> deleteBuyer(@PathVariable("buyerId") long id) {
         logger.trace("deleteBuyer(): id = {}", id);
-        if (!buyerService.exists(id)) {
+        if (!vendorService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        buyerService.delete(id);
+        vendorService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

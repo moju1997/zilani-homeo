@@ -4,7 +4,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet author="razamd" id="v1.0.x-id1">
+    <changeSet author="mojahid" id="v1.0.x-id1">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
                 <constraints primaryKey="true" primaryKeyName="users_pkey"/>
@@ -50,10 +50,10 @@
 
     </changeSet>
 
-    <changeSet author="razamd" id="v1.0.x-id2">
-        <createTable tableName="buyer">
+    <changeSet author="mojahid" id="v1.0.x-id2">
+        <createTable tableName="vendor">
             <column autoIncrement="true" name="id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="buyer_pkey"/>
+                <constraints primaryKey="true" primaryKeyName="vendor_pkey"/>
             </column>
             <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
             <column name="modified_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
@@ -65,7 +65,7 @@
             <column name="description" type="VARCHAR(255)"/>
         </createTable>
 
-        <createIndex indexName="uk_buyer_name" tableName="buyer" unique="true">
+        <createIndex indexName="uk_vendor_name" tableName="vendor" unique="true">
             <column name="name"/>
         </createIndex>
     </changeSet>

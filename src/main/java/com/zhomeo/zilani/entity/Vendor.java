@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-public class Buyer extends Auditable {
+public class Vendor extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Buyer extends Auditable {
     @NotEmpty
     private String name;
 
-    public Buyer() {
+    public Vendor() {
     }
 
     public Long getId() {

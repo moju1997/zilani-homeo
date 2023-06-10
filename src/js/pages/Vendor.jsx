@@ -17,7 +17,7 @@ import {
 // import hasPrivilege from "../../utils/hasPrivilege";
 // import Forbidden from "../../components/Forbidden";
 
-export const CreateBuyer = props => {
+export const CreateVendor = props => {
   return (
     <Create {...props}>
       <SimpleForm redirect="home">
@@ -28,7 +28,7 @@ export const CreateBuyer = props => {
   );
 };
 
-export const EditBuyer = props => {
+export const EditVendor = props => {
   const record = useSelector(
     state =>
       state.jazasoft.resources[props.resource] &&
@@ -59,7 +59,7 @@ const useHomeStyles = makeStyles(theme => ({
   }
 }));
 
-export const BuyerHome = props => {
+export const VendorHome = props => {
   const classes = useHomeStyles();
   return (
     <List {...props}>

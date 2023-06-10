@@ -20,7 +20,7 @@ import englishMessage from "./i18n/en";
 import theme from "./theme";
 
 // pages
-import { BuyerHome, CreateBuyer, EditBuyer } from "./pages/Buyer";
+import { VendorHome, CreateVendor, EditVendor } from "./pages/Vendor";
 import Downloads from "./pages/downloads/Downloads";
 
 import Profile from "./pages/profile/Profile";
@@ -68,7 +68,7 @@ const initialState = {
 };
 
 const resources = [
-  { i18nKey: "buyers", resource: "buyers" },
+  { i18nKey: "vendors", resource: "vendors" },
   { i18nKey: "seasons", resource: "seasons" },
   { i18nKey: "users", resource: "users" },
 ];
@@ -116,11 +116,11 @@ class App extends React.Component {
 
           resourceList.push(
             <Resource
-              name="buyers"
-              resource="buyers"
-              home={BuyerHome}
-              create={CreateBuyer}
-              edit={EditBuyer}
+              name="vendors"
+              resource="vendors"
+              home={VendorHome}
+              create={CreateVendor}
+              edit={EditVendor}
               icon={MenuIcon}
             />
           );

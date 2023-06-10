@@ -105,7 +105,7 @@
       scope: delete
 
 - !com.jazasoft.embedded.dto.UrlInterceptor
-  url: /api/buyers
+  url: /api/vendors
   scopes: !java.util.Arrays$ArrayList
     - !com.jazasoft.embedded.dto.Scope
       method: get
@@ -118,7 +118,7 @@
       scope: write
 
 - !com.jazasoft.embedded.dto.UrlInterceptor
-  url: /api/buyers/\d+
+  url: /api/vendors/\d+
   scopes: !java.util.Arrays$ArrayList
     - !com.jazasoft.embedded.dto.Scope
       method: get

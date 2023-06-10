@@ -8,6 +8,6 @@ public interface ApiUrls {
     public static final String URL_USERS_USER_CHANGE_PASSWORD = "/changePassword";
     public static final String URL_USERS_USER_FORGOT_PASSWORD = "/forgotPassword";
 
-    String ROOT_URL_BUYERS = "/api/buyers";
-    String URL_BUYERS_BUYER= "/{buyerId}";
+    String ROOT_URL_VENDORS = "/api/vendors";
+    String URL_VENDORS_VENDOR= "/{vendorId}";
 }
