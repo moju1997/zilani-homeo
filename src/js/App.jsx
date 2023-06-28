@@ -15,28 +15,48 @@ import MenuIcon from "@material-ui/icons/Menu";
 import UserIcon from "mdi-material-ui/AccountGroup";
 import DownloadsIcon from "@material-ui/icons/GetApp";
 
-import { App as JApp, Resource, createAuthProvider, createDataProvider } from "jazasoft";
+import {
+  App as JApp,
+  Resource,
+  createAuthProvider,
+  createDataProvider,
+} from "jazasoft";
 
 import englishMessage from "./i18n/en";
 import theme from "./theme";
 
 // pages
-import { VendorHome, CreateVendor, EditVendor } from "./pages/Vendor";
+import { VendorHome, CreateVendor, EditVendor } from "./pages/library/Vendor";
 import Downloads from "./pages/downloads/Downloads";
 
 import Profile from "./pages/profile/Profile";
 
-import { UserHome, UserCreate, UserEdit, UserView, UserUpload } from "./pages/user";
+import {
+  UserHome,
+  UserCreate,
+  UserEdit,
+  UserView,
+  UserUpload,
+} from "./pages/user";
+import {
+  CreateMedicineCategory,
+  EditMedicineCategory,
+  MedicineCategoryHome,
+} from "./pages/library/MedicineCategory";
 
-const rootUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
-//const rootUrl = `http://${window.location.hostname}:8018`;
+// const rootUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
+const rootUrl = `http://${window.location.hostname}:8018`;
 // const rootUrl = "http://costing-dev.jaza-soft.com";
 
 const appId = "zilani";
 const authServerUrl = `${rootUrl}`;
 const appUrl = `${rootUrl}/api`;
 
-export const authProvider = createAuthProvider(authServerUrl, "Basic Y2xpZW50OnNlY3JldA==", appId);
+export const authProvider = createAuthProvider(
+  authServerUrl,
+  "Basic Y2xpZW50OnNlY3JldA==",
+  appId
+);
 
 export const dataProvider = createDataProvider(appUrl, appId);
 
@@ -44,7 +64,10 @@ export const dataProvider = createDataProvider(appUrl, appId);
   axios
     .get(`${rootUrl}/buildInfo`)
     .then((response) => {
-      localStorage.setItem(`${appId}-build-info`, JSON.stringify(response.data));
+      localStorage.setItem(
+        `${appId}-build-info`,
+        JSON.stringify(response.data)
+      );
     })
     .catch((err) => {
       console.log(err);
@@ -76,7 +99,13 @@ const resources = [
 
 const customRoutes = [
   <Route name="profile" exact path="/profile" component={Profile} />,
-  <Route name="users" resource="users" exact path="/users/upload" component={UserUpload} />,
+  <Route
+    name="users"
+    resource="users"
+    exact
+    path="/users/upload"
+    component={UserUpload}
+  />,
 ];
 
 class App extends React.Component {
@@ -115,16 +144,29 @@ class App extends React.Component {
           );
 
           resourceList.push(
-            <Resource
-              name="vendors"
-              resource="vendors"
-              home={VendorHome}
-              create={CreateVendor}
-              edit={EditVendor}
-              icon={MenuIcon}
-            />
+            <Resource name="library" icon={MenuIcon}>
+              <Resource
+                name="vendors"
+                resource="vendors"
+                home={VendorHome}
+                create={CreateVendor}
+                edit={EditVendor}
+                icon={MenuIcon}
+              />
+              <Resource
+                name="medicineCategories"
+                resource="medicineCategories"
+                home={MedicineCategoryHome}
+                create={CreateMedicineCategory}
+                edit={EditMedicineCategory}
+                icon={MenuIcon}
+              />
+            </Resource>
           );
-          resourceList.push(<Resource name="downloads" home={Downloads} icon={DownloadsIcon} />);
+
+          resourceList.push(
+            <Resource name="downloads" home={Downloads} icon={DownloadsIcon} />
+          );
 
           return resourceList;
         }}

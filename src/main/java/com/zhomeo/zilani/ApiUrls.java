@@ -10,4 +10,7 @@ public interface ApiUrls {
 
     String ROOT_URL_VENDORS = "/api/vendors";
     String URL_VENDORS_VENDOR= "/{vendorId}";
+
+    String ROOT_URL_MEDICINE_CATEGORIES = "/api/medicineCategories";
+    String URL_MEDICINE_CATEGORYIES_MEDICINE_CATEGORY= "/{medicineCategoryId}";
 }
