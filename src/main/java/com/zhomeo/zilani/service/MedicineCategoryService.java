@@ -52,6 +52,7 @@ public class MedicineCategoryService {
   public MedicineCategory update(MedicineCategory medicineCategory) {
     MedicineCategory mMedicineCategory = medicineCategoriesRespository.findById(medicineCategory.getId()).orElseThrow(() -> new RuntimeException("MedicineCategory not found."));
     mMedicineCategory.setName(medicineCategory.getName());
+    mMedicineCategory.setDescription(medicineCategory.getDescription());
     return mMedicineCategory;
   }
 

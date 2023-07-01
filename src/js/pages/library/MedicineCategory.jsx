@@ -22,7 +22,7 @@ export const CreateMedicineCategory = (props) => {
     <Create {...props}>
       <SimpleForm redirect="home">
         <TextInput source="name" validate={[required(), minLength(2)]} />
-        <TextInput source="desc" />
+        <TextInput source="descriptionription" />
       </SimpleForm>
     </Create>
   );
@@ -44,7 +44,7 @@ export const EditMedicineCategory = (props) => {
           validate={[required(), minLength(2)]}
           options={{ fullWidth: true, disabled: record?.isReferenced }}
         />
-        <TextInput source="desc" />
+        <TextInput source="description" />
       </SimpleForm>
     </Edit>
   );
@@ -65,7 +65,7 @@ export const MedicineCategoryHome = (props) => {
     <List {...props}>
       <Datagrid>
         <TextField source="name" />
-        <TextField source="desc" />
+        <TextField source="description" />
         <EditButton cellClassName={classes.buttonEdit} />
         <DeleteButton cellClassName={classes.buttonDelete} />
       </Datagrid>

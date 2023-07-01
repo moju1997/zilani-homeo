@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/medicineCategories")
+@RequestMapping(ApiUrls.ROOT_URL_MEDICINE_CATEGORIES)
 public class MedicineCategoryRestController {
   private final Logger logger = LoggerFactory.getLogger(MedicineCategoryRestController.class);
 
@@ -47,7 +47,7 @@ public class MedicineCategoryRestController {
 
   @GetMapping(ApiUrls.URL_MEDICINE_CATEGORYIES_MEDICINE_CATEGORY)
   public ResponseEntity<?> findOneMedicineCategory(@PathVariable("medicineCategoryId") long id) {
-    logger.trace("findOneBuyer(): id = {}", id);
+    logger.trace("findOneMedicineCategoryId(): id = {}", id);
     return ResponseEntity.of(medicineCategoryService.findOne(id));
   }
 
@@ -60,8 +60,8 @@ public class MedicineCategoryRestController {
   }
 
   @PutMapping(ApiUrls.URL_MEDICINE_CATEGORYIES_MEDICINE_CATEGORY)
-  public ResponseEntity<?> updateBuyerMedicineCategory(@PathVariable("medicineCategoryId") long id, @Validated @RequestBody MedicineCategory medicineCategory) {
-    logger.trace("updateBuyer(): id = {} \n {}", id, medicineCategory);
+  public ResponseEntity<?> updateMedicineCategory(@PathVariable("medicineCategoryId") long id, @Validated @RequestBody MedicineCategory medicineCategory) {
+    logger.trace("updateMedicineCategoryId(): id = {} \n {}", id, medicineCategory);
     if (!medicineCategoryService.exists(id)) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
@@ -71,8 +71,8 @@ public class MedicineCategoryRestController {
   }
 
   @DeleteMapping(ApiUrls.URL_MEDICINE_CATEGORYIES_MEDICINE_CATEGORY)
-  public ResponseEntity<?> deleteBuyer(@PathVariable("buyerId") long id) {
-    logger.trace("deleteBuyer(): id = {}", id);
+  public ResponseEntity<?> deleteBuyer(@PathVariable("medicineCategoryId") long id) {
+    logger.trace("deleteMedicineCategoryId(): id = {}", id);
     if (!medicineCategoryService.exists(id)) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
