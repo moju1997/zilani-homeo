@@ -16,4 +16,7 @@ public interface ApiUrls {
 
     String ROOT_URL_MEDICINE_POWERS = "/api/medicinePowers";
     String URL_MEDICINE_POWERS_MEDICINE_POWER= "/{medicinePowerId}";
+
+    String ROOT_URL_MEDICINE_BRANDS = "/api/medicineBrands";
+    String URL_MEDICINE_BRANDS_MEDICINE_BRAND= "/{medicineBrandId}";
 }
