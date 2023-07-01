@@ -12,5 +12,8 @@ public interface ApiUrls {
     String URL_VENDORS_VENDOR= "/{vendorId}";
 
     String ROOT_URL_MEDICINE_CATEGORIES = "/api/medicineCategories";
-    String URL_MEDICINE_CATEGORYIES_MEDICINE_CATEGORY= "/{medicineCategoryId}";
+    String URL_MEDICINE_CATEGORIES_MEDICINE_CATEGORY = "/{medicineCategoryId}";
+
+    String ROOT_URL_MEDICINE_POWERS = "/api/medicinePowers";
+    String URL_MEDICINE_POWERS_MEDICINE_POWER= "/{medicinePowerId}";
 }

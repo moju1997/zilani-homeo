@@ -167,6 +167,37 @@
       roles: admin
       scope: delete
 
+- !com.jazasoft.embedded.dto.UrlInterceptor
+  url: /api/medicinePowers
+  scopes: !java.util.Arrays$ArrayList
+    - !com.jazasoft.embedded.dto.Scope
+      method: get
+      type: AUTHENTICATED
+      scope: read
+    - !com.jazasoft.embedded.dto.Scope
+      method: post
+      type: PROTECTED_ROLE_BASED
+      roles: admin
+      scope: write
+
+- !com.jazasoft.embedded.dto.UrlInterceptor
+  url: /api/medicinePowers/\d+
+  scopes: !java.util.Arrays$ArrayList
+    - !com.jazasoft.embedded.dto.Scope
+      method: get
+      type: AUTHENTICATED
+      scope: read
+    - !com.jazasoft.embedded.dto.Scope
+      method: put
+      type: PROTECTED_ROLE_BASED
+      roles: admin
+      scope: write
+    - !com.jazasoft.embedded.dto.Scope
+      method: delete
+      type: PROTECTED_ROLE_BASED
+      roles: admin
+      scope: delete
+
 
 - !com.jazasoft.embedded.dto.UrlInterceptor
   url: /api/seasons
