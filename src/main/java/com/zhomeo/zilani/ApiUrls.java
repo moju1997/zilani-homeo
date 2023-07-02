@@ -10,4 +10,16 @@ public interface ApiUrls {
 
     String ROOT_URL_VENDORS = "/api/vendors";
     String URL_VENDORS_VENDOR= "/{vendorId}";
+
+    String ROOT_URL_MEDICINE_CATEGORIES = "/api/medicineCategories";
+    String URL_MEDICINE_CATEGORIES_MEDICINE_CATEGORY = "/{medicineCategoryId}";
+
+    String ROOT_URL_MEDICINE_POWERS = "/api/medicinePowers";
+    String URL_MEDICINE_POWERS_MEDICINE_POWER= "/{medicinePowerId}";
+
+    String ROOT_URL_MEDICINE_BRANDS = "/api/medicineBrands";
+    String URL_MEDICINE_BRANDS_MEDICINE_BRAND= "/{medicineBrandId}";
+
+    String ROOT_URL_MEDICINE_QUANTITY = "/api/medicineQuantities";
+    String URL_MEDICINE_QUANTITY_MEDICINE_QUANTITY = "/{medicineQuantityId}";
 }

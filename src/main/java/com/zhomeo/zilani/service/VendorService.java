@@ -51,6 +51,7 @@ public class VendorService {
     public Vendor update(Vendor vendor) {
         Vendor mvendor = vendorRepository.findById(vendor.getId()).orElseThrow(() -> new RuntimeException("vendor not found."));
         mvendor.setName(vendor.getName());
+        mvendor.setDescription(vendor.getDescription());
         return mvendor;
     }
 

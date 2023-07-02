@@ -32,8 +32,8 @@ public class VendorRestController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findAllBuyers(@RequestParam(value = "search", defaultValue = "") String search, Pageable pageable) {
-        logger.trace("findAllBuyers()");
+    public ResponseEntity<?> findAllVendors(@RequestParam(value = "search", defaultValue = "") String search, Pageable pageable) {
+        logger.trace("findAllVendors()");
         Page<Vendor> pages;
         if (search.trim().isEmpty()) {
             pages = vendorService.findAll(pageable);
@@ -46,33 +46,33 @@ public class VendorRestController {
     }
 
     @GetMapping(ApiUrls.URL_VENDORS_VENDOR)
-    public ResponseEntity<?> findOneBuyer(@PathVariable("buyerId") long id) {
-        logger.trace("findOneBuyer(): id = {}", id);
+    public ResponseEntity<?> findOneVendor(@PathVariable("vendorId") long id) {
+        logger.trace("findOneVendor(): id = {}", id);
         return ResponseEntity.of(vendorService.findOne(id));
     }
 
     @PostMapping
-    public ResponseEntity<?> saveBuyer(@Valid @RequestBody Vendor buyer) {
-        logger.trace("createBuyer():\n {}", buyer.toString());
-        buyer = vendorService.save(buyer);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(buyer.getId()).toUri();
-        return ResponseEntity.created(location).body(buyer);
+    public ResponseEntity<?> saveVendor(@Valid @RequestBody Vendor Vendor) {
+        logger.trace("createVendor():\n {}", Vendor.toString());
+        Vendor = vendorService.save(Vendor);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(Vendor.getId()).toUri();
+        return ResponseEntity.created(location).body(Vendor);
     }
 
     @PutMapping(ApiUrls.URL_VENDORS_VENDOR)
-    public ResponseEntity<?> updateBuyer(@PathVariable("buyerId") long id, @Validated @RequestBody Vendor buyer) {
-        logger.trace("updateBuyer(): id = {} \n {}", id, buyer);
+    public ResponseEntity<?> updateVendor(@PathVariable("vendorId") long id, @Validated @RequestBody Vendor vendor) {
+        logger.trace("updateVendor(): id = {} \n {}", id, vendor);
         if (!vendorService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        buyer.setId(id);
-        buyer = vendorService.update(buyer);
-        return new ResponseEntity<>(buyer, HttpStatus.OK);
+        vendor.setId(id);
+        vendor = vendorService.update(vendor);
+        return new ResponseEntity<>(vendor, HttpStatus.OK);
     }
 
     @DeleteMapping(ApiUrls.URL_VENDORS_VENDOR)
-    public ResponseEntity<?> deleteBuyer(@PathVariable("buyerId") long id) {
-        logger.trace("deleteBuyer(): id = {}", id);
+    public ResponseEntity<?> deleteVendor(@PathVariable("vendorId") long id) {
+        logger.trace("deleteVendor(): id = {}", id);
         if (!vendorService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

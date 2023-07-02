@@ -12,25 +12,25 @@ import {
   minLength,
   Datagrid,
   EditButton,
-  DeleteButton
+  DeleteButton,
 } from "jazasoft";
 // import hasPrivilege from "../../utils/hasPrivilege";
 // import Forbidden from "../../components/Forbidden";
 
-export const CreateVendor = props => {
+export const CreateMedicineCategory = (props) => {
   return (
     <Create {...props}>
       <SimpleForm redirect="home">
         <TextInput source="name" validate={[required(), minLength(2)]} />
-        <TextInput source="desc" />
+        <TextInput source="descriptionription" />
       </SimpleForm>
     </Create>
   );
 };
 
-export const EditVendor = props => {
+export const EditMedicineCategory = (props) => {
   const record = useSelector(
-    state =>
+    (state) =>
       state.jazasoft.resources[props.resource] &&
       state.jazasoft.resources[props.resource].data &&
       state.jazasoft.resources[props.resource].data[props.id]
@@ -44,28 +44,28 @@ export const EditVendor = props => {
           validate={[required(), minLength(2)]}
           options={{ fullWidth: true, disabled: record?.isReferenced }}
         />
-        <TextInput source="desc" />
+        <TextInput source="description" />
       </SimpleForm>
     </Edit>
   );
 };
 
-const useHomeStyles = makeStyles(theme => ({
+const useHomeStyles = makeStyles((theme) => ({
   buttonEdit: {
-    width: theme.spacing(14)
+    width: theme.spacing(14),
   },
   buttonDelete: {
-    width: theme.spacing(16)
-  }
+    width: theme.spacing(16),
+  },
 }));
 
-export const VendorHome = props => {
+export const MedicineCategoryHome = (props) => {
   const classes = useHomeStyles();
   return (
     <List {...props}>
       <Datagrid>
         <TextField source="name" />
-        <TextField source="desc" />
+        <TextField source="description" />
         <EditButton cellClassName={classes.buttonEdit} />
         <DeleteButton cellClassName={classes.buttonDelete} />
       </Datagrid>
