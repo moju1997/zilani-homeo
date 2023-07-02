@@ -46,7 +46,7 @@ public class VendorRestController {
     }
 
     @GetMapping(ApiUrls.URL_VENDORS_VENDOR)
-    public ResponseEntity<?> findOneVendor(@PathVariable("VendorId") long id) {
+    public ResponseEntity<?> findOneVendor(@PathVariable("vendorId") long id) {
         logger.trace("findOneVendor(): id = {}", id);
         return ResponseEntity.of(vendorService.findOne(id));
     }
@@ -71,7 +71,7 @@ public class VendorRestController {
     }
 
     @DeleteMapping(ApiUrls.URL_VENDORS_VENDOR)
-    public ResponseEntity<?> deleteVendor(@PathVariable("VendorId") long id) {
+    public ResponseEntity<?> deleteVendor(@PathVariable("vendorId") long id) {
         logger.trace("deleteVendor(): id = {}", id);
         if (!vendorService.exists(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

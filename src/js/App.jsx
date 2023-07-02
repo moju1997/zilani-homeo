@@ -21,7 +21,8 @@ import englishMessage from "./i18n/en";
 import theme from "./theme";
 
 // pages
-import { VendorHome, CreateVendor, EditVendor } from "./pages/library/Vendor";
+// import { VendorHome, CreateVendor, EditVendor } from "./pages/library/Vendor";
+import { VendorHome, VendorCreate, VendorEdit, VendorView } from "./pages/library/vendor";
 import Downloads from "./pages/downloads/Downloads";
 
 import Profile from "./pages/profile/Profile";
@@ -124,8 +125,9 @@ class App extends React.Component {
                 name="vendors"
                 resource="vendors"
                 home={VendorHome}
-                create={CreateVendor}
-                edit={EditVendor}
+                create={VendorCreate}
+                edit={VendorEdit}
+                view={VendorView}
                 icon={MenuIcon}
               />
               <Resource
