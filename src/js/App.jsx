@@ -53,6 +53,11 @@ import {
   EditMedicineBrand,
   MedicineBrandHome,
 } from "./pages/library/MedicineBrand";
+import {
+  CreateMedicineQuantity,
+  EditMedicineQuantity,
+  MedicineQuantityHome,
+} from "./pages/library/MedicineQuantity";
 
 // const rootUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
 const rootUrl = `http://${window.location.hostname}:8018`;
@@ -185,6 +190,14 @@ class App extends React.Component {
                 home={MedicineBrandHome}
                 create={CreateMedicineBrand}
                 edit={EditMedicineBrand}
+                icon={MenuIcon}
+              />
+              <Resource
+                name="medicineQuantities"
+                resource="medicineQuantities"
+                home={MedicineQuantityHome}
+                create={CreateMedicineQuantity}
+                edit={EditMedicineQuantity}
                 icon={MenuIcon}
               />
             </Resource>
