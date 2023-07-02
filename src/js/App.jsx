@@ -7,7 +7,6 @@ import avatar from "./asset/img/avatar-male.png";
 import logoDark from "./asset/img/logo-dark.png";
 import logoWhite from "./asset/img/logo-white.png";
 
-// import Dashboard from "./pages/dashboard/Dashboard";
 import Dashboard from "./pages/dashboard/Dashboard";
 
 //icons
@@ -21,7 +20,6 @@ import englishMessage from "./i18n/en";
 import theme from "./theme";
 
 // pages
-// import { VendorHome, CreateVendor, EditVendor } from "./pages/library/Vendor";
 import { VendorHome, VendorCreate, VendorEdit, VendorView } from "./pages/library/vendor";
 import Downloads from "./pages/downloads/Downloads";
 
@@ -33,8 +31,8 @@ import { CreateMedicinePower, EditMedicinePower, MedicinePowerHome } from "./pag
 import { CreateMedicineBrand, EditMedicineBrand, MedicineBrandHome } from "./pages/library/MedicineBrand";
 import { CreateMedicineQuantity, EditMedicineQuantity, MedicineQuantityHome } from "./pages/library/MedicineQuantity";
 
-// const rootUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
-const rootUrl = `http://${window.location.hostname}:8018`;
+const rootUrl = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ":" + window.location.port : "");
+// const rootUrl = `http://${window.location.hostname}:8018`;
 // const rootUrl = "http://costing-dev.jaza-soft.com";
 
 const appId = "zilani";
