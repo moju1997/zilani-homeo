@@ -12,12 +12,12 @@ import {
   minLength,
   Datagrid,
   EditButton,
-  DeleteButton
+  DeleteButton,
 } from "jazasoft";
 // import hasPrivilege from "../../utils/hasPrivilege";
 // import Forbidden from "../../components/Forbidden";
 
-export const CreateVendor = props => {
+export const CreateVendor = (props) => {
   return (
     <Create {...props}>
       <SimpleForm redirect="home">
@@ -28,9 +28,9 @@ export const CreateVendor = props => {
   );
 };
 
-export const EditVendor = props => {
+export const EditVendor = (props) => {
   const record = useSelector(
-    state =>
+    (state) =>
       state.jazasoft.resources[props.resource] &&
       state.jazasoft.resources[props.resource].data &&
       state.jazasoft.resources[props.resource].data[props.id]
@@ -44,22 +44,22 @@ export const EditVendor = props => {
           validate={[required(), minLength(2)]}
           options={{ fullWidth: true, disabled: record?.isReferenced }}
         />
-        <TextInput source="desc" />
+        <TextInput source="description" />
       </SimpleForm>
     </Edit>
   );
 };
 
-const useHomeStyles = makeStyles(theme => ({
+const useHomeStyles = makeStyles((theme) => ({
   buttonEdit: {
-    width: theme.spacing(14)
+    width: theme.spacing(14),
   },
   buttonDelete: {
-    width: theme.spacing(16)
-  }
+    width: theme.spacing(16),
+  },
 }));
 
-export const VendorHome = props => {
+export const VendorHome = (props) => {
   const classes = useHomeStyles();
   return (
     <List {...props}>

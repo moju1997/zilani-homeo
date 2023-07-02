@@ -9,7 +9,7 @@ export default {
   dashboard: "Dashboard",
   forbidden: {
     title: "Forbidden",
-    message: "Access Denied. You do not have enough privilege for this operation"
+    message: "Access Denied. You do not have enough privilege for this operation",
   },
   resources: {
     users: {
@@ -19,44 +19,36 @@ export default {
         username: "Username",
         email: "Email",
         mobile: "Mobile",
-        roles: "Roles"
-      }
+        roles: "Roles",
+      },
     },
 
     visitCalendar: {
-      name: "Calendar |||| Calendar"
+      name: "Calendar |||| Calendar",
     },
 
     // library tabs
-    businessUnits: {
-      name: "Business Unit |||| Business Unit",
+    medicineCategories: {
+      name: "Medicine Category |||| Medicine Category",
       fields: {
-        name: "Business Unit",
-        location: "Location"
-      }
+        name: "Medicine Category",
+      },
     },
-    awards: {
-      name: "Award |||| Award",
+    medicinePowers: {
+      name: "Medicine Power |||| Medicine Power",
       fields: {
-        name: "Award",
-        desc: "Description",
-        directNomination: "Direct Nomination"
-      }
+        name: "Medicine Power",
+      },
     },
-    committees: {
-      name: "Committee |||| Committee",
-      fields: {
-        type: "Committee Type",
-        year: "Year",
-        "award.name": "Award"
-      }
+    medicineBrands: {
+      name: "Medicine Brand |||| Medicine Brand",
     },
-    bestPractices: {
-      name: "Best Practices ||||| Best Practices"
+    medicineQuantities: {
+      name: "Medicine Quantity ||||| Medicine Quantity",
     },
 
     performanceGrid: {
-      name: "Performance Grid ||||| Performance Grid"
-    }
-  }
+      name: "Performance Grid ||||| Performance Grid",
+    },
+  },
 };
